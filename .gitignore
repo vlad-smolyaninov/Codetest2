@@ -1,0 +1,21 @@
+# IDE files
+.idea/
+
+# Dependency directories
+node_modules/
+
+# dotenv environment variable files
+.env
+
+# Coverage info
+coverage
+
+# Build files
+dist
+
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
