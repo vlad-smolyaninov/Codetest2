@@ -1,7 +1,7 @@
 # Codetest2
+[![CI](https://github.com/vlad-smolyaninov/codetest2/actions/workflows/main.yml/badge.svg)](https://github.com/vlad-smolyaninov/codetest2/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/vlad-smolyaninov/codetest2/branch/master/graph/badge.svg?token=RN2MPUD4XS)](https://codecov.io/gh/vlad-smolyaninov/codetest2)
-
-This is a Node.js project for a test.
+![Known Vulnerabilities](https://snyk.io/test/github/vlad-smolyaninov/codetest2/badge.svg)
 
 ## Getting Started
 
@@ -12,8 +12,8 @@ To get started with the project, follow these steps:
 
 ### To test
 
-- `npm test` Runs the unit tests using Jest.
-- `npm run test:integration` Runs the integration tests.
+- `yarn run test:unit` Runs the unit tests using Jest.
+- `yarn run test:integration` Runs the integration tests.
 
 
 
