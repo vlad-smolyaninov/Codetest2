@@ -1,4 +1,5 @@
 # Codetest2
+[![codecov](https://codecov.io/gh/vlad-smolyaninov/codetest2/branch/master/graph/badge.svg?token=RN2MPUD4XS)](https://codecov.io/gh/vlad-smolyaninov/codetest2)
 
 This is a Node.js project for a test.
 
