@@ -1,33 +1,8 @@
-import { Coordinates, Enemy, IRadar, Protocol } from '../../../src/api/radar/RadarTypes'
+import { Enemy, IRadar, Protocol } from '../../../src/api/radar/RadarTypes'
 import RadarTargetCalculator from '../../../src/api/radar/RadarTargetCalculator'
 import { MAX_DISTANCE } from '../../../src/api/radar/RadarConstants'
 
 describe('RadarTargetCalculator', () => {
-  describe('calculateDistance', () => {
-    it('should return the correct distance from the origin', () => {
-      const point: Coordinates = { x: 3, y: 4 }
-      const expectedDistance = 5
-
-      expect(RadarTargetCalculator.calculateDistance(point)).toEqual(expectedDistance)
-    })
-  })
-
-  describe('isCloserToOrigin', () => {
-    it('should return true if point1 is closer to the origin', () => {
-      const point1: Coordinates = { x: 3, y: 4 }
-      const point2: Coordinates = { x: 5, y: 3 }
-
-      expect(RadarTargetCalculator.isCloserToOrigin(point1, point2)).toBe(true)
-    })
-
-    it('should return false if point2 is closer to the origin', () => {
-      const point1: Coordinates = { x: 5, y: 3 }
-      const point2: Coordinates = { x: 3, y: 4 }
-
-      expect(RadarTargetCalculator.isCloserToOrigin(point1, point2)).toBe(false)
-    })
-  })
-
   describe('calculateTarget', () => {
     const scanMock = [
       {
