@@ -17,3 +17,9 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Run build for tests
+        run: yarn run build
+
+      - name: Run server & Run integration tests & Stop server
+        run: yarn run test:ci

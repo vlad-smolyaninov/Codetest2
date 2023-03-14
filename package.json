@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "test:unit": "jest",
-    "test:integration": "sh tests/integration/tests.sh"
+    "test:integration": "sh tests/integration/tests.sh",
+    "test:ci": "npx pm2 start dist/index.js --name node-server --wait-ready && tests/integration/tests.sh && npx pm2 stop node-server"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.2",
