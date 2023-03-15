@@ -10,20 +10,22 @@ export default class RadarTargetCalculator {
 
     let bestTarget: IScan | undefined
     for (const target of data.scan) {
-      if (!this.isInRange(target.coordinates)) continue
-
-      if (this.isAvoidMech(target)) continue
-      if (this.isAvoidCrossfire(target)) continue
-
-      if (this.isPrioritizeMech(bestTarget, target)) continue
-      if (this.isPrioritizeMech(target, bestTarget)) bestTarget = target
-
-      if (this.isPrioritizeAssist(bestTarget, target)) continue
-      if (this.isPrioritizeAssist(target, bestTarget)) bestTarget = target
-
-      if (this.isPrioritizeClosest(target, bestTarget)) continue
-      if (this.isPrioritizeFurthest(target, bestTarget)) continue
-
+      switch (true) {
+        case !this.isInRange(target.coordinates):
+        case this.isAvoidMech(target):
+        case this.isAvoidCrossfire(target):
+          continue
+        case this.isPrioritizeMech(bestTarget, target):
+        case this.isPrioritizeAssist(bestTarget, target):
+          // find first prioritized target
+          bestTarget = target
+          break
+        case this.isPrioritizeAssist(target, bestTarget):
+        case this.isPrioritizeMech(target, bestTarget):
+        case this.isPrioritizeClosest(target, bestTarget):
+        case this.isPrioritizeFurthest(target, bestTarget):
+          continue
+      }
       bestTarget = target
     }
 
@@ -39,14 +41,14 @@ export default class RadarTargetCalculator {
     const target2EnemyType = target2?.enemies.type
 
     return (
-      target1EnemyType === Enemy.mech && target2EnemyType !== Enemy.mech && this.hasProtocol(Protocol.prioritizeMech)
+      target1EnemyType !== Enemy.mech && target2EnemyType === Enemy.mech && this.hasProtocol(Protocol.prioritizeMech)
     )
   }
 
   private isPrioritizeAssist(target1: IScan | undefined, target2: IScan | undefined): boolean {
     const target1Allies = target1?.allies ?? 0
     const target2Allies = target2?.allies ?? 0
-    return target2Allies === 0 && target1Allies >= 1 && this.hasProtocol(Protocol.assistAllies)
+    return target1Allies === 0 && target2Allies >= 1 && this.hasProtocol(Protocol.assistAllies)
   }
 
   private isAvoidMech(target: IScan): boolean {

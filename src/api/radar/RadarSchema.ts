@@ -1,4 +1,4 @@
-import { JSONSchemaType } from 'ajv'
+import { JSONSchemaType } from '../../lib/ValidatorAdapter'
 import { Enemy, IRadar, IScan, Protocol } from './RadarTypes'
 
 export const scanSchema: JSONSchemaType<IScan> = {
