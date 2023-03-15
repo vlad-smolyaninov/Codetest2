@@ -5,7 +5,7 @@ export interface ILogObject {
   stack?: string
 }
 
-export default class Logger {
+export class Logger {
   private static instance: Logger
 
   public static getInstance(): Logger {
@@ -19,3 +19,5 @@ export default class Logger {
     console.log(logData)
   }
 }
+
+export default Logger.getInstance()

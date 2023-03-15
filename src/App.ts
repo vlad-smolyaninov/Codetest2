@@ -16,7 +16,7 @@ export default class App {
     this.httpServer = http.createServer(this.express)
   }
 
-  public async init(): Promise<void> {
+  public init(): void {
     // json body parser
     this.express.use(express.json())
 
